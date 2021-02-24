@@ -1,0 +1,174 @@
+package main;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Main
+{
+	private boolean createFolder = false;
+	private boolean createWordFile = false;
+
+	private String periodName = "";
+	private final String MAKE_FOLDER = "-f";
+	private final String MAKE_WORD_FILE = "-d";
+	private String innerMessage = " Aufgabe vom ";
+
+	public Main(String[] input) throws IOException
+	{
+		if (!isProgramInputAvailable(input))
+		{
+			Printer.printWrongProgramInput();
+			return;
+		}
+
+		setPeriodName(input[0]);
+
+		if (!isSecondArgumentAvailable(input))
+		{
+			Printer.printMissingSecondArgument();
+			return;
+		}
+		
+		defineCreateFolder(input[1]);
+		defineCreateWordFile(input[1]);
+		
+		if (isThirdArgumentAvailable(input))
+		{
+			defineCreateFolder(input[2]);
+			defineCreateWordFile(input[2]);
+		} 
+		
+		/* build folder and file name */
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.addString(getPeriodName());	// add period name
+		stringBuilder.addString(getInnerMessage());	// add inner message
+
+		SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+		String dateToday = formatter.format(new Date());
+		stringBuilder.addString(dateToday);	// add date 
+		
+		/* create folder and files */
+		
+		if (isCreateFolder())
+		{
+			File folder = new File("./" + stringBuilder.getOutput());
+
+			if (!folder.exists())
+				folder.mkdir();
+			
+			/*
+			 * make file in folder if file is wished
+			 */
+			if (isCreateWordFile())
+			{
+				File wordFile = new File("./" + stringBuilder.getOutput() + "/" + stringBuilder.getOutput() + ".docx");
+
+				if (!wordFile.exists())
+					wordFile.createNewFile();
+				
+				setCreateWordFile(false);
+			}
+		}
+
+		/*
+		 * make word or docx file
+		 * 
+		 */		
+		if (isCreateWordFile())
+		{
+			File wordFile = new File("./" + stringBuilder.getOutput() + ".docx");
+
+			if (!wordFile.exists())
+				wordFile.createNewFile();
+		}
+	}
+	
+	private final void defineCreateWordFile(String input)
+	{
+		if (input.equals(getMakeWordFile()))
+		{
+			setCreateWordFile(true);
+		} else
+		{
+			setCreateWordFile(false);
+		}
+	}
+	
+	private final void defineCreateFolder(String input)
+	{
+		if (input.equals(getMakeFolder()))
+		{
+			setCreateFolder(true);
+		} else
+		{
+			setCreateFolder(false);
+		}
+	}
+	
+	private final boolean isCreateFolder()
+	{
+		return createFolder;
+	}
+
+	private final boolean isCreateWordFile()
+	{
+		return createWordFile;
+	}
+
+	private final void setCreateFolder(boolean createFolder)
+	{
+		this.createFolder = createFolder;
+	}
+
+	private final void setCreateWordFile(boolean createWordFile)
+	{
+		this.createWordFile = createWordFile;
+	}
+	
+	private final boolean isSecondArgumentAvailable(String[] input)
+	{
+		return input.length >= 2;
+	}
+	
+	private final boolean isThirdArgumentAvailable(String[] input)
+	{
+		return input.length >= 3;
+	}
+	
+	private final boolean isProgramInputAvailable(String[] input)
+	{
+		return input.length > 0;
+	}
+
+	private final String getPeriodName()
+	{
+		return periodName;
+	}
+
+	private final String getInnerMessage()
+	{
+		return innerMessage;
+	}
+
+	private final String getMakeFolder()
+	{
+		return MAKE_FOLDER;
+	}
+
+	private final String getMakeWordFile()
+	{
+		return MAKE_WORD_FILE;
+	}
+
+	private final void setPeriodName(String periodName)
+	{
+		this.periodName = periodName;
+	}
+	
+	public static final void main(String[] input) throws IOException
+	{
+		new Main(input);
+	}
+}
