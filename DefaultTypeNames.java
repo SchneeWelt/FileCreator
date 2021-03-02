@@ -10,5 +10,5 @@ package database;
 
 public enum DefaultTypeNames
 {
-	Geografie, Mathe, Deutsch, Englisch, Biologie, Chemie, Kunst, Religion, Geschichte, Wipo, Sport, nulla;
+	example1, example2, example3, ...;
 }
