@@ -34,12 +34,12 @@ second param (param 1) = -d or -e or -n (file type)
 third param (param 2) = -f or -o (folder? | open created files and dirs?)
 fourth param (param 3) = -o (open created files and dirs?)
  
-The typeName is how the file is going to be named. E.c. typeName = Hello
+The typeName is how the file is going to be named. E.c. typeName = "Hello"
 means the created file is going to be named: "Hello Aufgabe vom 05.03.2021."
 the "Aufgabe vom" part is changable. The Date will always be the latest.
 Default typeNames are also in existance. Therefore, special strings like "-d"
 or "-e" are also possible. In this case "-e" or "-d" are keys. Please look up.
-the TypeKeys.java file. In there all valid keys can be found.
+the TypeKeys.java file. In there are valid keys can be found also you can add some since I did overwrite them before this upload.
  
 second param: The second param defines whether a word file (-d), a txt file.
 (-e) or nothing (-n) will be created. Incase only a folder is wished to be.
