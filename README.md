@@ -1,9 +1,8 @@
 # FileCreator
 A smal tool I developed for organizing my self. Feel free to use it however, do not make money with it
-
 The code is written in java. I used openJDK 1.13 
 
-- old -
+- old
 
 How to use: 
 cmd command input line looks like this:
@@ -18,11 +17,16 @@ In the second case however, the output will be "Sellings Aufgabe vom [date]". Th
 
 So there are this two different arguments "-f" and "-d" in the moment you only can use one of them at the same time. 
 
-- new -
+- new
 
-In the last couple of days i worked a lot on this program. Therefore, there are now a lot of new functions. I am also planning to add a better gui soon. In the following
+In the last couple of days I spend a lot time working on this program. Therefore, there are now a lot of new features. I am also planning to add a better gui soon. In the following
 the latest readMe file and how to use the program. 
 
+I recomend creating a bat file (on windows) for running the jar file automatically. Mine looks like this:
+cd ""path to where the bat file is located""
+java -jar "path to where the jar is located/FileCreator.jar"
+
+If there are no arguments entered when running the jar, than the program will ask for them in a gui.
 
 input syntax:
 first param (param 0) = TypeName (type name)
