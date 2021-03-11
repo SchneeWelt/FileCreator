@@ -26,7 +26,9 @@ I recomend creating a bat file (on windows) for running the jar file automatical
 cd ""path to where the bat file is located""
 java -jar "path to where the jar is located/FileCreator.jar"
 
-If there are no arguments entered when running the jar, than the program will ask for them in a gui.
+If there are no arguments entered when running the jar, than the program will ask for them in a gui. After entering 
+them (how they look below) press enter to confirm. When clicking with the mouse on the textFild the content will
+be erased. 
 
 input syntax:
 first param (param 0) = TypeName (type name)
